@@ -109,8 +109,8 @@ export function ResultEvaluateButton(props: ButtonHTMLAttributes<HTMLButtonEleme
       .then(res => {
         const newData = tableData.map((row, i) => ({
           ...row,
-          driveTime: res[i]?.duration,
-          distance: res[i]?.distance,
+          driveTime: res[i]?.duration[0] !== res[i]?.duration[1] ? `${res[i]?.duration[0]} - ${res[i]?.duration[1]}` : res[i]?.duration[0],
+          distance: res[i]?.distance
         }))
         setTableData(newData)
         setLoading(false)
